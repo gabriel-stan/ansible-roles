@@ -1,0 +1,84 @@
+[global_config]
+  borderless = True
+  enabled_plugins = ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  suppress_multiple_term_dialog = True
+[keybindings]
+  group_tab_toggle = <Alt><Super>t
+  hide_window = F12
+  new_tab = <Primary>t
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = True
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 2560:0
+      size = 2560, 1440
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 1085
+      ratio = 0.756097560976
+      type = VPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 1281
+      ratio = 0.501369863014
+      type = HPaned
+    [[[terminal2]]]
+      command = gtop
+      order = 0
+      parent = child1
+      profile = blue
+      type = Terminal
+    [[[terminal4]]]
+      command = ""
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+    [[[terminal5]]]
+      command = htop
+      order = 1
+      parent = child3
+      profile = green
+      type = Terminal
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#41e1e5"
+    scrollback_lines = 50000
+  [[white]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#ffffff"
+    scrollback_lines = 50000
+  [[blue]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#41e1e5"
+    scrollback_lines = 50000
+  [[green]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#00ff00"
+    scrollback_lines = 50000
+  [[red]]
+    background_color = "#282828"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#ef2929"
+    scrollback_lines = 50000
