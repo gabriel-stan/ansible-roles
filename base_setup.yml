@@ -1,0 +1,6 @@
+---
+- name: Base setup
+  hosts: localhost
+
+  roles:
+  - name: base-setup
