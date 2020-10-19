@@ -1,0 +1,11 @@
+---
+- name: Configure terminal utils
+  hosts: localhost
+
+  tasks:
+  - name: test task
+    debug:
+      msg: "Hello there? home dir: {{ ansible_env.HOME }} user: {{ ansible_user }}"
+      
+  roles:
+  - name: terminator
