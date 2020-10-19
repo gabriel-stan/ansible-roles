@@ -1,0 +1,20 @@
+---
+- name: update packages cache
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: install monitoring tools
+  become: yes
+  apt:
+    pkg:
+    - git
+    - htop
+    - npm
+    - curl
+
+- name: Install nodejs packages
+  become: yes
+  npm:
+    name: gtop
+    global: yes
