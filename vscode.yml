@@ -1,0 +1,28 @@
+---
+- name: Install Visual Studio Code
+  hosts: localhost
+
+  tasks:
+  - name: test task
+    debug:
+      msg: "Hello there? home dir: {{ ansible_env.HOME }} user: {{ lookup('env', 'USER') }}"
+
+  roles:
+    - role: gantsign.visual-studio-code
+      users:
+        - username: "{{ lookup('env', 'USER') }}"
+          visual_studio_code_extensions:
+            - esbenp.prettier-vscode
+            - alefragnani.project-manager
+            - vscode-icons-team.vscode-icons
+            - formulahendry.auto-close-tag
+            - CoenraadS.bracket-pair-colorizer
+            - VisualStudioExptTeam.vscodeintellicode
+            - eamodio.gitlens
+            - redhat.vscode-yaml
+            - HashiCorp.terraform
+            - msazurermtools.azurerm-vscode-tools
+            - ms-vscode.azurecli
+            - ms-vscode.azure-account
+            - ms-kubernetes-tools.vscode-kubernetes-tools
+            - ms-azuretools.vscode-docker
