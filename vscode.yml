@@ -2,11 +2,6 @@
 - name: Install Visual Studio Code
   hosts: localhost
 
-  tasks:
-  - name: test task
-    debug:
-      msg: "Hello there? home dir: {{ ansible_env.HOME }} user: {{ lookup('env', 'USER') }}"
-
   roles:
     - role: gantsign.visual-studio-code
       users:
