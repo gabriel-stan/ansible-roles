@@ -1,3 +1,5 @@
 ---
 roles:
   - gantsign.visual-studio-code
+  - geerlingguy.docker
+  - gantsign.antigen
