@@ -4,3 +4,10 @@
       
   roles:
   - name: terminator
+    tags: 
+      - terminator
+  - name: zsh
+    tags: 
+      - zsh
+    vars:
+      - username: "{{ lookup('env', 'USER') }}"

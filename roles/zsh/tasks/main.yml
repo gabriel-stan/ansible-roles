@@ -1,0 +1,42 @@
+---
+- name: install zsh
+  become: yes
+  apt:
+    name: zsh
+    state: present
+
+- name: install gantsign.antigen role
+  include_role:
+    name: gantsign.antigen
+  vars:
+    users:
+      - username: "{{ username }}"
+        antigen_libraries:
+          - name: oh-my-zsh
+        antigen_theme:
+          name: robbyrussell
+        antigen_bundles:
+          - name: git
+          - name: pip
+          - name: command-not-found
+          - name: zsh-syntax-highlighting
+            url: zsh-users/zsh-syntax-highlighting
+          - name: powerlevel10k
+            url: romkatv/powerlevel10k
+
+- name: check if virtualenv is installed
+  shell: "bash -c typeset -F | grep virtualenvwrapper"
+  register: result
+  check_mode: no
+  ignore_errors: true
+
+- name: restore previous virtualenvwrapper settings
+  blockinfile:
+    path: "/home/{{ username }}/.zshrc"
+    block: |
+      export WORKON_HOME=/home/{{ username }}/.virtualenvs
+      export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+      source /home/{{ username }}/.local/bin/virtualenvwrapper.sh
+    # validate: "source %s"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK virtualenvwrapper"
+  when: result.rc == 0

@@ -15,9 +15,3 @@
   copy:
     src: config
     dest: "{{ ansible_env.HOME }}/.config/terminator/config"
-
-- name: install zsh
-  become: yes
-  apt:
-    name: zsh
-    state: present
