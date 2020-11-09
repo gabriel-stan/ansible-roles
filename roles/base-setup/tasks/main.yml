@@ -4,7 +4,7 @@
   apt:
     update_cache: yes
 
-- name: install monitoring tools
+- name: install base packages
   become: yes
   apt:
     pkg:
@@ -12,6 +12,11 @@
     - htop
     - npm
     - curl
+    - jq
+    - ipcalc
+    - arp-scan
+    - net-tools
+    - traceroute
 
 - name: Install nodejs packages
   become: yes
