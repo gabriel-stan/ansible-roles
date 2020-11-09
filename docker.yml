@@ -1,0 +1,7 @@
+- hosts: localhost
+
+  roles:
+    - name: geerlingguy.docker
+      become: yes
+      docker_users:
+        - "{{ lookup('env', 'USER') }}"
