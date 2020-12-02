@@ -1,0 +1,15 @@
+---
+- name: check that the virtualenvwrapper.sh exists
+  stat:
+    path: "{{ home_directory }}/.local/bin/virtualenvwrapper.sh"
+  register: stat_virtualenvwrapper
+
+- name: include virtualenvwrapper settings in {{ shell_default_rc_file }}
+  blockinfile:
+    path: "{{ shell_default_rc_file }}"
+    block: |
+      export WORKON_HOME={{ home_directory }}/.virtualenvs
+      export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+      source {{ home_directory }}/.local/bin/virtualenvwrapper.sh
+    marker: "# {mark} ANSIBLE MANAGED BLOCK virtualenvwrapper"
+  when: stat_virtualenvwrapper.stat.exists

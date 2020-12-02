@@ -1,0 +1,6 @@
+---
+- name: Configure pip
+  hosts: localhost
+      
+  roles:
+  - name: pip

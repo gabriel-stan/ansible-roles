@@ -1,0 +1,27 @@
+---
+
+- name: run "apt-get update"
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: install required packages
+  become: yes
+  apt:
+    name: 
+      - python3-setuptools
+      - python3-dev
+      - build-essential
+      - python3-pip
+      - python3-venv
+      - pipenv
+    state: present
+
+- name: upgrade pip
+  pip:
+    name: 
+      - pip
+      - virtualenv
+      - virtualenvwrapper
+    state: latest
