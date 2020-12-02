@@ -1,0 +1,3 @@
+shell_default_rc_file: "{{ home_directory }}/.zshrc"
+shell_default_aliases_file: "{{ home_directory }}/.zshrc"
+shell_default_profile_file: "{{ home_directory }}/.zprofile"
