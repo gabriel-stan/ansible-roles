@@ -1,0 +1,5 @@
+username: "{{ ansible_env.USER }}"
+home_directory: "{{ ansible_env.HOME }}"
+shell_default_rc_file: "{{ home_directory }}/.bashrc"
+shell_default_aliases_file: "{{ home_directory }}/.bashrc"
+shell_default_profile_file: "{{ home_directory }}/.profile"
