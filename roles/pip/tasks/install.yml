@@ -10,13 +10,17 @@
   become: yes
   apt:
     name: 
-      - python3-setuptools
-      - python3-dev
-      - build-essential
       - python3-pip
       - python3-venv
-      - pipenv
     state: present
+
+- name: remove conflicting packages
+  become: yes
+  apt:
+    name: 
+      - python3-virtualenv
+    state: absent
+    autoremove: yes
 
 - name: upgrade pip
   pip:
