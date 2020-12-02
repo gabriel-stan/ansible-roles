@@ -1,0 +1,29 @@
+---
+
+- name: check if zsh is the current shell
+  set_fact:
+    zsh_is_default: "{{ true if ansible_env.SHELL is search('zsh') else false }}"
+
+- name: get zsh path
+  command: which zsh
+  register: zsh_path
+  when: not zsh_is_default
+
+- name: change default shell for user
+  become: true
+  user:
+    name: "{{ username }}"
+    shell: "{{ zsh_path.stdout }}"
+  when: not zsh_is_default
+
+- name: copy default zsh config
+  blockinfile:
+    path: "{{ shell_default_rc_file }}"
+    content: "{{ lookup('template', '.zshrc.j2') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK zsh config"
+    insertbefore: BOF
+
+- name: include pip role to fix virtualenvwrapper settings
+  include_role:
+    name: pip
+    tasks_from: configure

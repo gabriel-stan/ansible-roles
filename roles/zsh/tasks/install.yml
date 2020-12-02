@@ -1,0 +1,13 @@
+---
+
+- name: Run "apt-get update"
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: install zsh
+  become: yes
+  apt:
+    name: zsh
+    state: present
