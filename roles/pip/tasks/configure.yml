@@ -10,6 +10,8 @@
     block: |
       export WORKON_HOME={{ home_directory }}/.virtualenvs
       export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+      {% if config_include_wrapper %}
       source {{ home_directory }}/.local/bin/virtualenvwrapper.sh
+      {% endif %}
     marker: "# {mark} ANSIBLE MANAGED BLOCK virtualenvwrapper"
   when: stat_virtualenvwrapper.stat.exists
