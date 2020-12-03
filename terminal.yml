@@ -6,8 +6,9 @@
   - name: terminator
     tags: 
       - terminator
+  - name: terminal-tools
+    tags: 
+      - tools
   - name: zsh
     tags: 
       - zsh
-    vars:
-      - username: "{{ lookup('env', 'USER') }}"

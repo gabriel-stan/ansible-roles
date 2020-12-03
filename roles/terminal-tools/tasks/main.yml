@@ -1,0 +1,18 @@
+---
+- name: get url for lsd tool
+  shell: 'curl -s https://api.github.com/repos/Peltoche/lsd/releases | grep "browser_download_url.*lsd_.*_amd64.deb" | head -n 1 | cut -d : -f 2,3 | tr -d \"'
+  register: lsd_tool_url
+
+- name: Install lsd tool
+  become: true
+  apt:
+    deb: "{{ lsd_tool_url.stdout }}"
+
+- name: Install other tools via apt
+  become: true
+  apt:
+    name:
+      - bat
+      - fzf
+    update_cache: yes
+    cache_valid_time: 3600

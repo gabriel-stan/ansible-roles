@@ -1,0 +1,43 @@
+---
+
+- name: git checkout nerd fonts
+  git:
+    repo: 'https://github.com/ryanoasis/nerd-fonts.git'
+    dest: "{{ home_directory }}/.fonts/nerd-fonts"
+    depth: "1"
+  tags:
+    - zsh:oh-my-zsh:nerd_fonts
+
+- name: install nerd fonts
+  shell: "{{ home_directory }}/.fonts/nerd-fonts/install.sh"
+  register: install_output
+  tags:
+    - zsh:oh-my-zsh:nerd_fonts
+
+- name: output install log
+  debug:
+    var: install_output.stdout_lines
+  tags:
+    - zsh:oh-my-zsh:nerd_fonts
+
+- name: Download oh-my-zsh installer
+  get_url: 
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/oh-my-zsh-installer.sh
+    mode: '0740'
+  tags:
+    - zsh:oh-my-zsh:install
+
+- name: Execute the zsh-installer.sh
+  shell: /tmp/oh-my-zsh-installer.sh --unattended
+  args:
+    executable: /bin/zsh
+  tags:
+    - zsh:oh-my-zsh:install
+
+- name: Remove the zsh-installer.sh
+  file: 
+    path: /tmp/oh-my-zsh-installer.sh
+    state: absent
+  tags:
+    - zsh:oh-my-zsh:install

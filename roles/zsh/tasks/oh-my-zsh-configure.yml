@@ -1,0 +1,14 @@
+---
+
+- name: copy default zsh config
+  template:
+    src: .oh-my-zshrc.j2
+    dest: "{{ shell_default_rc_file }}"
+    backup: yes
+
+- name: include pip role to fix virtualenvwrapper settings
+  include_role:
+    name: pip
+    tasks_from: configure
+  vars:
+    config_include_wrapper: false
