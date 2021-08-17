@@ -16,6 +16,7 @@ mkdir -p "${VIRTUALENV_PROJECTS_HOME}"
 echo "export WORKON_HOME=${HOME}/.virtualenvs" >> ${BASH_PROFILE_CONFIG}
 echo "export PROJECT_HOME=${VIRTUALENV_PROJECTS_HOME}" >> ${BASH_PROFILE_CONFIG}
 echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ${BASH_PROFILE_CONFIG}
+echo "export VIRTUALENVWRAPPER_SCRIPT=${HOME}/.local/bin/virtualenvwrapper.sh" >> ${BASH_PROFILE_CONFIG}
 echo "source ${HOME}/.local/bin/virtualenvwrapper_lazy.sh" >> ${BASH_PROFILE_CONFIG}
 
 source ${BASH_PROFILE_CONFIG}
